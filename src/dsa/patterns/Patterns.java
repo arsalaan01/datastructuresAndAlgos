@@ -7,7 +7,58 @@ public class Patterns {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int n = scanner.nextInt();
-        pattern19(n);
+        pattern22(n);
+    }
+
+    public static void pattern22(int n) {
+        int i,j,top,right,bottom,left;
+        for(i=0;i<2*n-1;i++){
+            for(j=0;j<2*n-1;j++){
+                top = i;
+                left = j;
+                right = 2*n - 2 - j;
+                bottom = 2*n - 2 - j;
+                System.out.print(n-Math.min(Math.min(top,bottom),Math.min(left,right)));
+            }
+            System.out.println();
+        }
+
+    }
+
+    public static void pattern21(int n) {
+        int i,j;
+        for(i=0;i<n;i++){
+            for(j=0;j<n;j++){
+                if(i==0||j==0||i==n-1||j==n-1)
+                    System.out.print("*");
+                else
+                    System.out.print(" ");
+            }
+            System.out.println();
+        }
+    }
+
+    public static void pattern20(int n) {
+        int i,j,stars;
+        int spaces = 2*n-2;
+        for(i=1;i<=(2*n-1);i++){
+
+            stars = i;
+            if(i>n) stars = 2*n - i;
+
+            for(j=1;j<=stars;j++){
+                System.out.print("*");
+            }
+            for(j=1;j<=spaces;j++){
+                System.out.print(" ");
+            }
+            for(j=1;j<=stars;j++){
+                System.out.print("*");
+            }
+            System.out.println();
+            if(i<n) spaces -=2;
+            else spaces +=2;
+        }
     }
 
     public static void pattern19(int n) {
