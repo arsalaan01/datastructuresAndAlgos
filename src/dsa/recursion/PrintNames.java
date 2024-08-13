@@ -3,15 +3,18 @@ package dsa.recursion;
 import java.util.Scanner;
 
 public class PrintNames {
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
-        printSumOfFirstN(n);
+        System.out.println(printSumOfFirstN(n));
+
     }
 
-    public static void printSumOfFirstN(int n){
-        int sum = n * (n+1)/2;
-        System.out.println(sum);
+    public static int printSumOfFirstN(int n){
+        if(n<1)
+            return 0;
+        return n + printSumOfFirstN(n-1);
 
     }
 
