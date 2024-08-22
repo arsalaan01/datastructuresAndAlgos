@@ -6,18 +6,53 @@ import java.util.Scanner;
 public class ReverseArray {
 
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int n = sc.nextInt();
+//        Scanner sc = new Scanner(System.in);
+//        int n = sc.nextInt();
+//
+//        int[] num = new int[n];
+//        for (int i=0;i<n;i++)
+//            num[i] = sc.nextInt();
 
-        int[] num = new int[n];
-        for (int i=0;i<n;i++)
-            num[i] = sc.nextInt();
+        System.out.println(fibonacciRecursive(6));
 
-//        reverseArray(num);
-//        reverseArrayInPlace(num);
-//        revArrayRecursion(0,num.length-1,num);
-        revArrayRecusionSingleArg(0,num,n);
-        System.out.println(Arrays.toString(num));
+    }
+
+    public static int fibonacciRecursive(int n) {
+        if(n<=1)
+            return n;
+        int lastNum = fibonacciRecursive(n-1);
+        int secondLastNum = fibonacciRecursive(n-2);
+
+        return lastNum + secondLastNum;
+    }
+
+    public static void fibonacciSeries(int n) {
+        int []arr = new int[n+1];
+        arr[0] = 0;
+        arr[1] = 1;
+        for(int i = 2; i<=n;i++){
+            arr[i] = arr[i-1] + arr[i-2];
+        }
+
+        System.out.println("Nth Fibonacci number is: "+ Arrays.toString(arr));
+    }
+
+    public static boolean checkPalindromeRec(int i,String str) {
+        if(i > str.length()/2)
+            return true;
+        if(str.charAt(i) != str.charAt(str.length()-i-1))
+            return false;
+        return checkPalindromeRec(i+1,str);
+    }
+
+    public static boolean checkPalindrome(String s) {
+        int i,n=s.length();
+        for(i=0;i<n;i++){
+            if(s.charAt(i) != s.charAt(n-i-1)) {
+                return false;
+            }
+        }
+        return true;
     }
 
     public static void revArrayRecusionSingleArg(int i,int[] arr,int n){
